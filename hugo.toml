@@ -1,0 +1,37 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'My New Hugo Site'
+
+[[menus.main]]
+name = 'Home'
+pageRef = '/'
+weight = 10
+
+[[menus.main]]
+name = 'Posts'
+pageRef = '/posts'
+weight = 20
+
+[[menus.main]]
+name = 'Tags'
+pageRef = '/tags'
+weight = 30
+
+[module]
+  [module.hugoVersion]
+    extended = false
+    min = "0.116.0"
+
+# 页面底部信息配置
+  [params.footer]
+    enable = true   
+    since = 2023
+    # 公网安备信息，仅在中国使用（支持 HTML 格式）
+    #gov = "<a href=\"http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41082302411133\" target=\"_blank\" > &nbsp;豫公网安备 41082302411133号</a>"
+    #  ICP 备案信息，仅在中国使用（支持 HTML 格式）
+    #icp = "<a target=\"_blank\" rel=\"noopener\" href=\"http://beian.miit.gov.cn/\">京ICP备15015906号-6</a>"   
+    icp = "京ICP备15015906号-6"
+    [params.footer.siteTime]
+      enable = true
+      icon = "fa-solid fa-heartbeat"
+      value = "2023-05-13 16:35:29+08:00" # e.g. "2021-12-18T16:15:22+08:00"

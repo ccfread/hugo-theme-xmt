@@ -1,0 +1,189 @@
+html{--theme:#73aaff;--top:#fcfdfe;--Toolbox:#e4e7ed;--Fread-bj:#fff;--Fread-mment:#ebeef5;--background:rgba(255,255,255,0.8);--main:#404044;--routine:#606266;--minor:#808388;--seat:#c0c4cc;--classA:#dcdfe6;--classB:#e4e7ed;--classC:#ebeef5;--classD:#f2f6fc;--radius-wrap:6px;--radius-inner:4px;--text-shadow:0 1px 2px rgba(0,0,0,0.25);--text-xc:0 1px 8px rgba(0,0,0,0.25);--text-bt:0 1px 5px rgba(0,0,0,0.25);--box-shadow:0 5px 10px rgba(0,0,0,.1)}
+html[data-night='night'] body{--theme:#73aaff;--top:#252525;--Toolbox:#303030;--Fread-bj:#303030;--Fread-mment:#353535;--background:#232323e0;--main:#ccc;--routine:#bbb;--minor:#aaa;--seat:#888;--classA:#777;--classB:#666;--classC:#555;--classD:#303030;--text-shadow:none;--box-shadow:none}
+html[data-night='night'] body::before{background:#121212;z-index:-500}
+html[data-night='night'] .header_internal-logo .Fread_logo{display:none}
+html[data-night='night'] .header_internal-logo .Fread_logo.night{display:block}
+html[data-night='night'] .Fread_reads_article-video .episodes .box .item:not(.active){background:var(--classC)}
+html[data-night='night'] .Fread_reads_article blockquote{background:var(--classD);color:var(--routine);border-color:var(--classA)}
+html[data-night='night'] .Fread_reads_article code:not([class]){background:#fdf0ec38;color:#a6aba8}
+html[data-night='night'] .Fread_reads_article-anote{color:#ffffff9c}
+html[data-night='night'] .Fread_reads_article-abtn{color:#ffffff9c}
+html[data-night='night'] .Fread_reads_overdue-wrapper{background:var(--classD)}
+html[data-night='night'] .Fread_aside_item.author::before{background: linear-gradient(to bottom,rgba(255,255,255,0),#212121)}
+*{font-family:'Noto Sans SC','Source Han Serif','MiSans','Open Sans','PingFang SC', sans-serif;margin:0;padding:0;box-sizing:border-box;outline:none;-webkit-tap-highlight-color:transparent}
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-thumb{border-radius:4px;background:var(--seat)}
+::-webkit-scrollbar-track{background:transparent}
+::-moz-selection{color:#fff;background:var(--theme)}
+::selection{color:#fff;background:var(--theme)}
+body{font-size:14px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;padding-bottom:constant(safe-area-inset-bottom);padding-bottom:env(safe-area-inset-bottom)}
+body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;z-index:-520;pointer-events:none}
+input[type='text']{-webkit-appearance:none;border-radius:0;font-size:13px;font-weight:500}
+iframe{display:block;border:none;margin:0 auto;vertical-align:middle}
+textarea{font-size:14px;resize:none;-webkit-appearance:none}
+li{list-style:none}
+a{text-decoration:none;color:var(--theme)}
+h1,h2,h3,h4,h5,h6{text-shadow:var(--text-bt);font-weight:500}
+img{border:0;vertical-align:middle;vertical-align:text-top}
+img[src=''],img:not([src]){border:0;opacity:0}
+svg,canvas{vertical-align:middle}
+button{cursor:pointer;-webkit-appearance:none;font-size:13px}
+table{border-collapse:collapse;border-spacing:0}
+.icon2{width:1rem;height:1rem;margin-right:2px;fill:currentColor;overflow:hidden;flex-shrink: 0;}
+.Fread_balance{display:flex;align-items:center}
+.Fread_main{max-width:980px;min-width:0;flex:1}
+.Fread_total{display:flex;justify-content:center;width:100%;margin:0 auto;padding:0 10px}
+@media (max-width:1400px){
+html .Fread_vplayer{height:450px}
+html .Fread_live__play-player{height:500px}
+html .Fread_reads_article-video .play .box iframe{height:500px}
+html .Fread_reads_leaving-list{height:450px}
+html .Fread_reads_related-content .item img{height:100px}
+html .Fread_owo_contain .box .scroll .item{width:calc(100% / 15)}
+html .Fread_home_article-si.single .thumbnail{height:250px}
+html .Fread_home_article-si.multiple .thumbnail{grid-template-rows:160px}
+html .Fread_census__server-item .content #work,html .Fread_census__server-item .content #flow{height:300px}
+}
+@media (max-width:1199px){
+html .Fread_vplayer{height:430px}
+html .Fread_reads_article-video .play .box iframe{height:430px}
+html .Fread_reads_article-video .episodes .box{grid-template-columns:repeat(5,1fr)}
+html .Fread_reads_leaving-list{height:400px}
+html .Fread_reads_related-content .item img{height:90px}
+html .Fread_owo_contain .box .scroll .item{width:calc(100% / 12)}
+html .Fread_live__play-player{height:430px}
+html .Fread_live__list{grid-template-columns:repeat(2,1fr)}
+html .Fread_home_article-si.single .thumbnail{height:210px}
+html .Fread_home_article-si.multiple .thumbnail{grid-template-rows:125px}
+html .Fread_home_article-si.default .thumbnail{width:185px;height:125px}
+html .Fread_home_ad-link .image{height:180px}
+html .Fread_home_hot-list{-webkit-column-gap:10px;column-gap:10px}
+html .Fread_home_hot-list .item .link .inner .image{height:90px}
+html .Fread_home_roll{display:block}
+html .Fread_home_roll-recommend{padding-top:15px;width:100%;margin-left:0;display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+html .Fread_home_roll-recommend.noswiper{padding-top:0}
+html .Fread_home_roll-recommend .item{height:145px;margin:0 !important}
+html .Fread_census__basic-item.category #category{height:220px}
+html .Fread_census__server{grid-template-columns:45% 1fr}
+html .Fread_census__server-item .content #work,html .Fread_census__server-item .content #flow{height:280px}
+html .Fread_census__lately .content #lately{height:280px}
+html .swiper-container{height:280px}
+html .swiper-container .item{height:280px}
+}
+@media (max-width:992px){
+html .Fread_vplayer{height:400px}
+html .Fread_aside{display:none}
+html .Fread_live__play-player{height:400px}
+html .Fread_reads_article-video .play .box iframe{height:400px}
+html .Fread_reads_article-video .episodes .box{grid-template-columns:repeat(5,1fr)}
+html .Fread_reads_leaving-list{height:350px}
+html .Fread_reads_related-content .item img{height:90px}
+html .Fread_home_hot-list .item .link .inner .image{height:95px}
+html .Fread_home_roll-recommend .item{height:135px;margin:0 !important}
+html .header_internal-logo{padding-right:0}
+html .header_internal-logo::after{display:none}
+html .header_internal-search{display:none}
+html .header_internal-searchicon{display:block}
+html .Fread_census__basic{grid-template-columns:unset}
+html .Fread_census__lately .content #lately{height:265px}
+html .Fread_census__server{grid-template-columns:unset}
+html .Fread_census__server-item .content #work,html .Fread_census__server-item .content #flow{height:250px}
+html .swiper-container{height:250px}
+html .swiper-container .item{height:250px}
+}
+@media (max-width:768px){
+html .Fread_vplayer{height:225px}
+html .header_internal .Fread_total{justify-content:space-between}
+html .header_internal_nav{display:none}
+html .header_internal-logo{height:60px;margin-right:0}
+html .header_internal-logo img{max-height:40px;display:block}
+html .header_internal-searchicon{margin-left:0}
+html .header_internal-slideicon{display:block}
+html .header_below{display:none}
+html .header_search{top:60px}
+html .header_search .Fread_total{max-width:100%}
+html .Fread_home_roll-recommend{gap:10px}
+html .Fread_home_roll-recommend .item{height:100px}
+html .Fread_home_hot-list{grid-template-columns:repeat(2,1fr);gap:10px}
+html .Fread_home_ad-link .image{height:120px}
+html .Fread_home_column-notice{display:none}
+html .Fread_home_column-title .item{display:none}
+html .Fread_home_column-title .item:nth-child(1),html .Fread_home_column-title .item:nth-child(2){display:block}
+html .Fread_home_article-si .information .title{font-size:16px}
+html .Fread_home_article-si .information .abstract{display:none}
+html .Fread_home_article-si .meta .last{display:none !important}
+html .Fread_home_article-si.single .thumbnail{height:130px}
+html .Fread_home_article-si.single .thumbnail time,html .Fread_home_article-si.single .thumbnail svg{display:none}
+html .Fread_home_article-si.default .information .title{font-size:15px}
+html .Fread_home_article-si.default .thumbnail{width:140px;height:120px;margin-right:10px}
+html .Fread_home_article-si.default .thumbnail time,html .Fread_home_article-si.default .thumbnail svg{display:none}
+html .Fread_home_article-si.default .title{margin-bottom:0}
+html .Fread_home_article-si.default .meta .items{width:100%}
+html .Fread_home_article-si.default .meta .items li{display:none}
+html .Fread_home_article-si.default .meta .items li:nth-child(1){display:flex}
+html .Fread_home_article-si.default .meta .items li:nth-child(2){display:flex;margin-left:auto}
+html .Fread_home_article-si.default .meta .items li::after{display:none}
+html .Fread_home_article-si.multiple .thumbnail{grid-template-rows:70px;gap:10px}
+html .Fread_home_article-si.none .information{height:120px}
+html .Fread_home_article-si.none .abstract{display:-webkit-box;font-size:13px}
+html .Fread_home_article-list_loading .item .thumbnail{width:120px;height:80px}
+html .Fread_home_article-list_loading .item .information .title{margin-bottom:10px;height:20px}
+html .Fread_home_article-list_loading .item .information .abstract p{height:15px}
+html .Fread_wallpaper__pagination{justify-content:center}
+html .Fread_archive_title{font-size:18px}
+html .Fread_reads_title{font-size:18px}
+html .Fread_reads_topic .Fread_post_Rotation{font-size:12px}
+html .Fread_reads_topic .Fread_post_Rotation_source span:nth-child(n+4){display:none}
+html .Fread_reads_overdue-wrapper{padding:10px}
+html .Fread_reads_overdue-wrapper .title{margin-bottom:5px;font-size:14px}
+html .Fread_reads_overdue-wrapper .title .icon{margin-right:5px}
+html .Fread_reads_overdue-wrapper .content{font-size:13px;padding-left:0}
+html .Fread_reads_article{font-size:14px}
+html .Fread_reads_article pre[class*='language-']{font-size:13px}
+html .Fread_reads_article-video .play .box iframe{height:225px}
+html .Fread_reads_article-video .episodes .box{grid-template-columns:repeat(3,1fr);gap:10px}
+html .Fread_reads_leaving-list{height:300px}
+html .Fread_reads_leaving-list .item{font-size:12px;width:160px;min-height:unset}
+html .Fread_reads_leaving-list .item .user{padding:0 8px;height:35px}
+html .Fread_reads_leaving-list .item .user .avatar{width:15px;height:15px}
+html .Fread_reads_leaving-list .item .wrapper{padding:8px}
+html .Fread_reads_leaving-list .item .wrapper .content{height:109px;line-height:18px}
+html .Fread_reads_leaving-list .item .wrapper .content .owo_image{max-height:18px}
+html .Fread_reads_copyright .content .item{font-size:13px}
+html .Fread_reads_copyright .content .item .icon{width:16px;height:16px}
+html .Fread_reads_related-content{grid-template-columns:repeat(2,1fr);gap:10px}
+html .Fread_reads_related-content .item img{height:80px}
+html .Fread_reads_related-content .item h6{font-size:12px}
+html .Fread_live__pagination{justify-content:center}
+html .Fread_live__list{grid-template-columns:repeat(1,1fr)}
+html .Fread_live__play-player{height:185px}
+html .Fread_footer .Fread_total .item{font-size:13px}
+html .Fread_owo_contain .box .scroll .item{width:calc(100% / 6)}
+html .Fread_comment{position:relative}
+html .Fread_comment_title{font-size:18px;line-height:32px;text-align:center}
+html .Fread_comment_respond-type{position:absolute;top:15px;right:15px}
+html .Fread_comment_respond-type .item:first-child{border-bottom-left-radius:var(--radius-inner)}
+html .Fread_comment_respond-type .item:last-child{border-bottom-right-radius:var(--radius-inner)}
+html .Fread_comment_respond-form .head{display:block;border-bottom:none}
+html .Fread_comment_respond-form .head .list{border-bottom:0px solid var(--classB);margin-left:0px!important;margin-top:0.5rem}
+html .Fread_comment_respond-form .head .list:nth-child(2)::before,html .Fread_comment_respond-form .head .list:nth-child(2)::after{display:none}
+html .Fread_comment_respond-form .body .text{height:140px}
+html .Fread_comment .comment_list_item-contain .term .avatar{width:45px;height:45px;margin-right:10px}
+html .Fread_comment .comment_list_item-contain .term .content .user .agent{display:none}
+html .Fread_comment .comment_list_item-children{padding-left:0}
+html .Fread_comment .comment_list_item .Fread_comment_respond{margin-left:0}
+html .Fread_comment .comment_list_item .Fread_comment_respond-type{position:static}
+html .Fread_comment .comment_list_item .Fread_comment_respond-type .item:first-child{border-bottom-left-radius:0}
+html .Fread_comment .comment_list_item .Fread_comment_respond-type .item:last-child{border-bottom-right-radius:0}
+html .Fread_census__basic-item.list .list{padding:10px 15px}
+html .Fread_census__basic-item.list .list .count p{font-size:22px}
+html .Fread_census__lately .content{padding:5px}
+html .Fread_census__lately .content #lately{height:240px}
+html .Fread_census__server{grid-template-columns:unset}
+html .Fread_census__server-item .content{padding:5px}
+html .Fread_census__server-item .content #work,html .Fread_census__server-item .content #flow{height:240px}
+html .swiper-container{height:180px}
+html .swiper-container .item{height:180px}
+html .swiper-container .item .title{font-size:15px}
+html .Fread_wallpaper__list{grid-template-columns: repeat(2,1fr)}
+}
