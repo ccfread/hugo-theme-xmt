@@ -1,7 +1,42 @@
 {{ define "main" }}
-  {{ .Content }}
-  {{ range site.RegularPages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
-  {{ end }}
+{{/* .Content */}}
+
+{{/*文章列表*/}}
+{{ range site.RegularPages }}
+<li class="XMT_home_article-si default">
+  <a class="thumbnail" href="{{ .RelPermalink }}" title="{{ .LinkTitle }}" rel="noopener noreferrer">
+    <img class="ls-is-cached lazyloaded" width="100%" height="100%" alt="{{ .LinkTitle }}" src="/img/ldxuy6iy.png" />
+  </a>
+  <div class="information">
+    <a class="title" href="{{ .RelPermalink }}" title="{{ .LinkTitle }}" rel="noopener noreferrer">{{ .LinkTitle }}</a>
+
+    <a class="abstract" href="{{ .RelPermalink }}" title="文章摘要" rel="noopener noreferrer"> {{ .Summary }}</a>
+
+    <!--发布日期，阅读量等信息展示-->
+    <div class="meta">
+      <ul class="items">
+        <li><svg class="icon2" aria-hidden="true">
+          </svg>1年前</li>
+        <li><svg class="icon2" aria-hidden="true">
+          </svg>8,467</li>
+        <li><svg class="icon2" aria-hidden="true">
+          </svg>12</li>
+        <li><svg class="icon2" aria-hidden="true">
+          </svg>6</li>
+      </ul>
+
+
+      <!-- 文章分类-->
+      <div class="last" style="display:flex">
+        <a class="link" rel="noopener noreferrer" href="#">博客分享</a>
+      </div>
+    </div>
+
+
+
+  </div>
+
+</li>
+
+{{ end }}
 {{ end }}

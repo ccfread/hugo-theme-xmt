@@ -1,18 +1,41 @@
 <!DOCTYPE html>
-<html lang="{{ or site.Language.LanguageCode site.Language.Lang }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+<html lang="{{ or site.Language.LanguageCode site.Language.Lang }}"
+  dir="{{ or site.Language.LanguageDirection `ltr` }}">
+
 <head>
   {{- partial "head/meta.html" . -}}
   {{- partial "head/link.html" . -}}
 </head>
+
 <body>
+  <!-- -->
+  {{ partial "header.html" . }}
 
-    {{ partial "header.html" . }}
+  {{ partial "head/headimg.html" . }}
 
-  <main>
-    {{ block "main" . }}{{ end }}
-  </main>
+  <div class="XMT_total XMT_Pjax showInUp">
+    <!-- 文章列表 -->
+    <div class="XMT_main index">
+      <div class="XMT_home">
+        <!-- 第一部分，轮播图 -->
+        <div></div>
+        <!--第二部分，文章列表-->
+        <div class="XMT_home_article">
+          <div class="XMT_home_article-list">
+        {{ block "main" . }}{{ end }}
+      </div>
+      </div>
+      </div>
+    </div>
+    <!-- 作者info-->
+    <div class="XMT_aside">
 
-    {{ partial "footer.html" . }}
+      {{ partial "aside.html" . }}
+    </div>
+  </div>
+
+  {{ partial "footer.html" . }}
 
 </body>
+
 </html>
