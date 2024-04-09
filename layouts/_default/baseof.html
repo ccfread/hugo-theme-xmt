@@ -9,7 +9,25 @@
 
 <body>
   <!-- -->
-  {{ partial "header.html" . }}
+  {{- $authorc := .Site.Params.author -}}
+  <div class="XMT_header">
+    <div class="header_internal">
+      <div class="XMT_total">
+        <nav class="header_internal_nav">
+          <div class="header_below">
+            <div class="XMT_total">
+              <a title="{{ site.Title}}" class="header_internal-logo" href="{{ site.BaseURL}}">
+                <img class="Fread_logo" src="{{ $authorc.xmtimg}}" alt="{{ site.Title}}" />
+              </a>|
+              {{ partial "header.html" . }}
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+
 
   {{ partial "head/headimg.html" . }}
 
@@ -22,9 +40,9 @@
         <!--第二部分，文章列表-->
         <div class="XMT_home_article">
           <div class="XMT_home_article-list">
-        {{ block "main" . }}{{ end }}
-      </div>
-      </div>
+            {{ block "main" . }}{{ end }}
+          </div>
+        </div>
       </div>
     </div>
     <!-- 作者info-->

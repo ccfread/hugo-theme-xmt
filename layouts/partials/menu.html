@@ -1,21 +1,13 @@
 {{- $page := .page }}
 {{- $menuID := .menuID }}
 
+
 {{- with index site.Menus $menuID }}
-<div class="XMT_header">
-  <div class="header_internal">
-    <div class="XMT_total">
-      <nav class="header_internal_nav">
-        <div class="header_below">
-          <div class="XMT_total">
-          {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
-        </div>
-        </div>
-      </nav>
-    </div>
-  </div>
-</div>
+
+{{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
 {{- end }}
+
+
 
 {{- define "partials/inline/menu/walk.html" }}
 {{- $page := .page }}
@@ -33,15 +25,15 @@
 {{- end }}
 {{- end }}
 
-  <a class="item" {{- range $k, $v :=$attrs }} {{- with $v }} {{- printf " %s=%q" $k $v | safeHTMLAttr }} {{- end }} {{-
-    end -}}>{{ $name }}</a>
-  {{- with .Children }}
+<a class="item" {{- range $k, $v :=$attrs }} {{- with $v }} {{- printf " %s=%q" $k $v | safeHTMLAttr }} {{- end }} {{-
+  end -}}>{{ $name }}</a>
+{{- with .Children }}
 
-    {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+{{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
 
-    {{else}}
+{{else}}
 
-  {{- end }}
+{{- end }}
 
 {{- end }}
 {{- end }}
