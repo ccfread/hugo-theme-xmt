@@ -5,20 +5,32 @@
 <head>
   {{- partial "head/meta.html" . -}}
   {{- partial "head/link.html" . -}}
+  {{- partial "head/js.html" . -}}
 </head>
 
 <body>
+
+  {{ range  .Resources.Match "js/*.js" }}
+  <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="">
+{{ end }}
+
+
+
   <!-- -->
   {{- $authorc := .Site.Params.author -}}
   <div class="XMT_header">
     <div class="header_internal">
       <div class="XMT_total">
+        
+         <a title="{{ site.Title}}" class="header_internal-logo" href="{{ site.BaseURL}}">
+          <img class="Fread_logo" src="{{ $authorc.xmtimg}}" alt="{{ site.Title}}" />
+        </a>
+        <svg class="header_internal-slideicon" viewBox="0 0 1152 1024" xmlns="http://www.w3.org/2000/svg" width="20" height="20"> <path d="M76.032 872a59.968 59.968 0 1 0 0 120h999.936a59.968 59.968 0 1 0 0-120H76.032zm16-420.032a59.968 59.968 0 1 0 0 120h599.936a59.968 59.968 0 1 0 0-119.936H92.032zM76.032 32a59.968 59.968 0 1 0 0 120h999.936a60.032 60.032 0 0 0 0-120H76.032z"></path>
+        </svg>
         <nav class="header_internal_nav">
           <div class="header_below">
             <div class="XMT_total">
-              <a title="{{ site.Title}}" class="header_internal-logo" href="{{ site.BaseURL}}">
-                <img class="Fread_logo" src="{{ $authorc.xmtimg}}" alt="{{ site.Title}}" />
-              </a>|
+              |
               {{ partial "header.html" . }}
             </div>
           </div>
@@ -35,14 +47,8 @@
     <!-- 文章列表 -->
     <div class="XMT_main index">
       <div class="XMT_home">
-        <!-- 第一部分，轮播图 -->
-        <div></div>
+        {{ block "main" . }}{{ end }}
         <!--第二部分，文章列表-->
-        <div class="XMT_home_article">
-          <div class="XMT_home_article-list">
-            {{ block "main" . }}{{ end }}
-          </div>
-        </div>
       </div>
     </div>
     <!-- 作者info-->
@@ -51,6 +57,8 @@
       {{ partial "aside.html" . }}
     </div>
   </div>
+
+
 
   {{ partial "footer.html" . }}
 

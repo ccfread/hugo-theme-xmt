@@ -1,0 +1,70 @@
+{{define "main" }}
+
+<div class="XMT_main XMT_page">
+    <div class="XMT_reads" data-cid="4">
+
+        {{ range $type, $links := .Site.Data.flinks }}
+         
+
+        <p><span class="XMT_mtitle">
+                <span class="XMT_mtitle__text">
+                    {{$type}} 
+                </span>
+            </span></p>
+
+        <ul class="XMT_reads_friends XMTcx-friends">
+            {{ range $index, $friend := $links }}
+            <li class="XMT_reads_friends-item"> <a class="contain" href="{{ $friend.url | safeURL }}" target="_blank"
+                    style="background: #FA742B">
+                    <div class="XMTcx-f-left">
+                        <div class="f-avatar"> <img width="40" height="40" class="avatar ls-is-cached lazyloaded"
+                                src="{{ $friend.avatar | safeURL }}" data-src="{{ $friend.avatar | safeURL }}"> 
+                            </div>          
+                    </div>
+                    <div class="XMT-f-right"> 
+                        <span class="title"> <span class="sub-text">{{ $friend.name }}</span>
+                        </span>
+                        <div class="content">
+                            <div class="desc" title="{{ $friend.desc }}">{{ $friend.desc }}</div>
+                        </div>
+                    </div>
+                </a> </li>
+            {{ end }}
+           
+        </ul>
+        {{ end }}
+
+
+        <div class="XMT_reads_article">
+            <p><fread-mtitle title="欢迎添加友链">
+                    <span class="XMT_mtitle">
+                        <span class="XMT_mtitle__text">
+                            欢迎添加友链
+                        </span>
+                    </span>
+                </fread-mtitle></p>
+            <p><fread-message type="info" content="Description">
+                    <span class="XMT_message info">
+                        <span class="XMT_message__icon"></span>
+                        <span class="XMT_message__content">{{.Description}}</span>
+                    </span>
+                </fread-message></p>
+            <div class="XMT_callout" style="border-left-color: #9e4def;">
+                -&nbsp;name： {{ if .Site.Title}}{{ .Site.Title }} {{else}} 悠闲小馒头{{end}}
+                <br>&nbsp;&nbsp;desc：{{ if .Site.Params.Author.discribe }}{{ .Site.Params.Author.discribe }} {{else}}
+                爱喝酸奶的我的页面{{end}}
+                <br>&nbsp;&nbsp;avatar: {{ if .Site.Params.Author.xmtimg }}{{ .Site.Params.Author.xmtimg }}
+                {{else}}https://cdnjson.com/images/2024/03/23/noavatar_middle3819ce7850af41b5.jpg {{end}}
+                <br>&nbsp;&nbsp;link: {{ site.BaseURL}}
+            </div>
+            </span>
+        </div>
+
+
+
+
+        {{.Content}}
+
+    </div>
+</div>
+{{end }}

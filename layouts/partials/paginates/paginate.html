@@ -1,0 +1,51 @@
+<div>
+
+
+{{- if gt .Paginator.TotalPages 1 -}}
+
+{{/* 页面分页左侧展示 */}}
+{{ $showButten := 3}}
+
+  <ul class="pagination">
+    {{- .Scratch.Set "paginator.ellipsed" false -}}
+    {{- range $.Paginator.Pagers -}}
+      {{- $right := sub .TotalPages .PageNumber -}}
+      
+      {{- $showNumber := or (le .PageNumber 1) (eq $right 0) -}}
+      {{- $showNumber := or $showNumber (and (gt .PageNumber (sub $.Paginator.PageNumber $showButten)) (lt .PageNumber (add $.Paginator.PageNumber $showButten))) -}}
+      {{- if $showNumber -}}
+        {{- $.Scratch.Set "paginator.ellipsed" false -}}
+        {{- $.Scratch.Set "paginator.shouldEllipse" false -}}
+      {{- else -}}
+        {{- $.Scratch.Set "paginator.shouldEllipse" (not ($.Scratch.Get "paginator.ellipsed") ) -}}
+        {{- $.Scratch.Set "paginator.ellipsed" true -}}
+      {{- end -}}
+      {{- if $showNumber -}}
+        <li  class="XMT_load">
+            <a class="sN" href="{{ .URL }}" title="第{{ .PageNumber }}页">
+              <span  class="link {{ if eq . $.Paginator }} active{{ end }}" >{{ .PageNumber }}</span></a>
+        </li>
+      {{- else if ($.Scratch.Get "paginator.shouldEllipse") -}}
+        <li class="XMT_load">
+          <span class="page-link" aria-hidden="true">&hellip;</span>
+        </li>
+      {{- end -}}
+    {{- end -}}
+  </ul>
+{{- end -}}
+
+</div>
+
+<style>
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  white-space: nowrap;
+  width: 100%;
+  padding: 1rem 0;
+  color:#bfbfbf;
+}
+</style>

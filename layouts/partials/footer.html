@@ -1,9 +1,16 @@
+{{ if .IsHome}}
+{{ partial "friend/indexLinks.html" .}}
+{{end}}
+
+{{/*波浪，但感觉不适合这种主题*/}}
+ {{/* partial "footer/footerwave.html" .*/}}
+
 {{- $footerConfig := .Site.Params.footer -}}
 {{if $footerConfig.enable}}
 <div class="XMT_footer">
   <div class="XMT_total">
     <div class="item">
-      <p>{{$footerConfig.since}} - {{ now.Year }} 版权所有 ©  Powered by Hugo</p>
+      <p>{{$footerConfig.since}} - {{ now.Year }} 版权所有 © Powered by Hugo</p>
     </div>
     <div class="item">
       {{/* 备案 */}}

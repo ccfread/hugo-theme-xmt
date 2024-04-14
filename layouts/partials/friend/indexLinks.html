@@ -1,0 +1,9 @@
+<div class="XMT_index_friends">
+    {{ range $index, $friend := .Site.Data.flinks.IndexLinks }}
+     <a class="home_links_item" href="{{ $friend.url | safeURL }}" target="_blank" title="{{ $friend.name }}">
+            <img width="20" height="20" src="{{ $friend.avatar | safeURL }}" data-src="{{ $friend.avatar | safeURL }}">
+            <span class="home_links_item-text">{{ $friend.name }}</span>
+        </a> 
+    {{ end }}
+
+    </div>

@@ -1,7 +1,16 @@
-
 <div class="XMT_top_img top_img_index XMT_top_yy" style="background: url(/img/3kp6yv.jpg) center;background-size:cover;height:45vh">
-    <div class="infomation">
-      <h1 class="title"> John'Blog🍂</h1>
-      <div class="desctitle" style="font-size: 18px"> <span id="yiyan">一个人的生活旅程</span> </div>
+    <div class="infomation">      
+      <h1 class="title">
+        {{ if .Params.title}}
+        {{.Params.title}}
+        {{else}}
+        {{ .Title}}
+        {{end}}
+         🍂</h1>
+      <div class="desctitle" style="font-size: 18px">
+         <span id="yiyan">
+          {{ .Params.description}}          
+        </span> 
+      </div>
     </div>
   </div>

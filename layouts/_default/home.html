@@ -1,42 +1,62 @@
 {{ define "main" }}
 {{/* .Content */}}
 
+
 {{/*文章列表*/}}
-{{ range site.RegularPages }}
-<li class="XMT_home_article-si default">
-  <a class="thumbnail" href="{{ .RelPermalink }}" title="{{ .LinkTitle }}" rel="noopener noreferrer">
-    <img class="ls-is-cached lazyloaded" width="100%" height="100%" alt="{{ .LinkTitle }}" src="/img/ldxuy6iy.png" />
-  </a>
-  <div class="information">
-    <a class="title" href="{{ .RelPermalink }}" title="{{ .LinkTitle }}" rel="noopener noreferrer">{{ .LinkTitle }}</a>
 
-    <a class="abstract" href="{{ .RelPermalink }}" title="文章摘要" rel="noopener noreferrer"> {{ .Summary }}</a>
+<div class="XMT_home_article">
+  <div class="XMT_home_article-list">
 
-    <!--发布日期，阅读量等信息展示-->
-    <div class="meta">
-      <ul class="items">
-        <li><svg class="icon2" aria-hidden="true">
-          </svg>1年前</li>
-        <li><svg class="icon2" aria-hidden="true">
-          </svg>8,467</li>
-        <li><svg class="icon2" aria-hidden="true">
-          </svg>12</li>
-        <li><svg class="icon2" aria-hidden="true">
-          </svg>6</li>
-      </ul>
+    {{/*只显示type=posts的文章*/}}
+    {{/* range where site.RegularPages "Params.type" "posts" */}}
+    {{ $pagessss := .Paginate (where site.RegularPages "Params.type" "posts" )}}
+
+    {{ range $pagessss.Pages}}
 
 
-      <!-- 文章分类-->
-      <div class="last" style="display:flex">
-        <a class="link" rel="noopener noreferrer" href="#">博客分享</a>
+    {{/*只显示posts目录下的文章*/}}
+    {{/* range where site.RegularPages "Type" "posts" */}}
+
+
+
+    <li class="XMT_home_article-si default">
+      <a class="thumbnail" href="{{ .RelPermalink }}" title="{{ .LinkTitle }}" rel="noopener noreferrer">
+        <img class="ls-is-cached lazyloaded" width="100%" height="100%" alt="{{ .LinkTitle }}" src="" />
+      </a>
+      <div class="information">
+        <a class="title" href="{{ .RelPermalink }}" title="{{ .LinkTitle }}" rel="noopener noreferrer">{{ .LinkTitle
+          }}</a>
+
+        <a class="abstract" href="{{ .RelPermalink }}" title="文章摘要" rel="noopener noreferrer"> {{ .Summary }}</a>
+
+
+        <div class="meta">
+          <!-- 文章分类-->
+          <div class="last" style="display:flex">
+            {{range $pars := .Params.categories}}
+            <a class="link" rel="noopener noreferrer" href="/categories/{{ $pars}}">{{ $pars}}</a>&nbsp;&nbsp;&nbsp;
+            {{end}}
+          </div>
+          <!--发布日期，阅读量等信息展示-->
+          <ul class="items">
+            <li><svg class="icon2" aria-hidden="true">
+              </svg>1年前</li>
+            <li><svg class="icon2" aria-hidden="true">
+              </svg>8,467</li>
+            <li><svg class="icon2" aria-hidden="true">
+              </svg>12</li>
+            <li><svg class="icon2" aria-hidden="true">
+              </svg>6</li>
+          </ul>
+        </div>
       </div>
-    </div>
 
+    </li>
 
-
+    {{ end }}
   </div>
+</div>
+<!-- 翻页-->
+{{ partial "paginates/paginate.html" .}}
 
-</li>
-
-{{ end }}
 {{ end }}

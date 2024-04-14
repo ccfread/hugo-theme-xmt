@@ -5,3 +5,8 @@
 <meta name="viewport"
   content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
 </meta>
+{{ with .Site.Title }}
+<title>{{ .}}</title>
+{{else}}
+<title>悠闲小馒头</title>
+{{ end }}
