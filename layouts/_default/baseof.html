@@ -10,33 +10,46 @@
 
 <body>
 
-  {{ range  .Resources.Match "js/*.js" }}
+  {{ range .Resources.Match "js/*.js" }}
   <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="">
-{{ end }}
+  {{ end }}
 
 
 
   <!-- -->
-  {{- $authorc := .Site.Params.author -}}
+  {{- $authorc := .Site.Params.aside -}}
   <div class="XMT_header">
     <div class="header_internal">
       <div class="XMT_total">
-        
-         <a title="{{ site.Title}}" class="header_internal-logo" href="{{ site.BaseURL}}">
-          <img class="Fread_logo" src="{{ $authorc.xmtimg}}" alt="{{ site.Title}}" />
+        {{ if $authorc.author.avatar}}
+        <a title="{{ site.Title}}" class="header_internal-logo" href="{{ site.BaseURL}}">
+          <img class="Fread_logo" src="{{ $authorc.author.avatar}}" alt="{{ site.Title}}" />
         </a>
-        <svg class="header_internal-slideicon" viewBox="0 0 1152 1024" xmlns="http://www.w3.org/2000/svg" width="20" height="20"> <path d="M76.032 872a59.968 59.968 0 1 0 0 120h999.936a59.968 59.968 0 1 0 0-120H76.032zm16-420.032a59.968 59.968 0 1 0 0 120h599.936a59.968 59.968 0 1 0 0-119.936H92.032zM76.032 32a59.968 59.968 0 1 0 0 120h999.936a60.032 60.032 0 0 0 0-120H76.032z"></path>
+        {{end}}
+        <svg class="header_internal-slideicon" viewBox="0 0 1152 1024" xmlns="http://www.w3.org/2000/svg" width="20"
+          height="20">
+          <path
+            d="M76.032 872a59.968 59.968 0 1 0 0 120h999.936a59.968 59.968 0 1 0 0-120H76.032zm16-420.032a59.968 59.968 0 1 0 0 120h599.936a59.968 59.968 0 1 0 0-119.936H92.032zM76.032 32a59.968 59.968 0 1 0 0 120h999.936a60.032 60.032 0 0 0 0-120H76.032z">
+          </path>
         </svg>
         <nav class="header_internal_nav">
           <div class="header_below">
             <div class="XMT_total">
+              {{ if $authorc.author.avatar}}
               |
+              </a>
+              {{end}}
               {{ partial "header.html" . }}
             </div>
           </div>
         </nav>
       </div>
     </div>
+    {{ partial "menu/mobilmenu.html" .}}
+
+
+
+
   </div>
 
 

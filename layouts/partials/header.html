@@ -1,1 +1,6 @@
-{{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+{{ partial "menu/pcmenu.html" (dict "menuID" "main" "page" .) }}
+<div class="dddbqy" id="dddbqy"  style="display:none">
+    {{ range $_, $taxonomy := .Site.Taxonomies.tags }}
+    <a  href="{{ .Page.Permalink }}">{{ .Page.Title}}</a>
+{{ end }}
+</div>

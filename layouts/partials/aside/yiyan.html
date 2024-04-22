@@ -1,3 +1,5 @@
+{{- $yiyanConfig := .Site.Params.aside.yiyan -}}
+{{ if $yiyanConfig.enable}}
 <div class="XMT_aside_item flatterer" style="top: 80px;">
     <div class="XMT_aside_item-title"> <svg class="icon2" aria-hidden="true"
             style="margin-right:5px;width:17px;height:17px">
@@ -14,3 +16,4 @@
             </svg> </div>
     </div>
 </div>
+{{end}}

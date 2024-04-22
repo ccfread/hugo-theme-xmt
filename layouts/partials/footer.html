@@ -3,29 +3,79 @@
 {{end}}
 
 {{/*波浪，但感觉不适合这种主题*/}}
- {{/* partial "footer/footerwave.html" .*/}}
+{{/* partial "footer/footerwave.html" .*/}}
 
 {{- $footerConfig := .Site.Params.footer -}}
 {{if $footerConfig.enable}}
 <div class="XMT_footer">
   <div class="XMT_total">
+    {{ if $footerConfig.copyright.copyright}}
     <div class="item">
-      <p>{{$footerConfig.since}} - {{ now.Year }} 版权所有 © Powered by Hugo</p>
-    </div>
-    <div class="item">
-      {{/* 备案 */}}
-      {{with $footerConfig.icp}}
-      <span class="icp">{{ . | safeHTML }}</span>
+      <span>{{ $footerConfig.copyright.since }} - {{ now.Year }} 版权所有 ©
+        
+        {{ if $footerConfig.copyright.author }}
+        {{ .Site.Title}}
+        {{end}}
+
+      </span>
+
+      {{ if $footerConfig.powered.enable }}
+      {{ if $footerConfig.powered.hugoLogo }}
+      <span>Powered by
+        <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo">Hugo</a>
+      </span>
       {{end}}
-      {{/* 公安网备 */}}
-      {{with $footerConfig.gov}}
-      <span class="gov">{{ . | safeHTML }}</span>
-      {{end}}
-      {{ if $footerConfig.siteTime }}
-      <p>已运行{{$footerConfig.siteTime}}</p>
       {{end}}
 
     </div>
+    {{end}}
+
+    {{ if $footerConfig.beian.icp_enable}}
+    <div class="item">
+      {{/* 备案 */}}
+      {{with $footerConfig.beian.icp}}
+      <span class="icp"><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">{{ .}}</a></span>
+      {{end}}
+    </div>
+    {{end}}
+
+    {{ if $footerConfig.beian.gov_enable}}
+    <div class="item">
+      {{/* 公安网备 */}}
+      <span class="gov"><img src="/img/gov_beian.webp" /><a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode={{$footerConfig.beian.gov}}"
+          target="_blank">{{
+          $footerConfig.beian.gov_province}}{{$footerConfig.beian.gov}}</a></span>
+    </div>
+    {{end}}
+
+
+
+    {{ if $footerConfig.siteTime.enable }}
+    {{- /* Config script */ -}}
+    <script>
+      // 检查window.config是否已经定义
+      if (!window.config) {
+        window.config = {};
+      }
+      // 示例：设置API端点
+      window.config.Date = '{{ $footerConfig.siteTime.value}}';
+    </script>
+    <div>
+      <span></span>
+      <span>{{$footerConfig.siteTime.pre}}</span><span id="XMT_run_time">footer.runTime</span>
+    </div>
+    {{end}}
+
+    {{ if $footerConfig.powered.enable }}
+    <div class="themeby">
+      {{ if $footerConfig.powered.themeLogo }}
+      <span>Theme <a href="https://github.com/ccfread/hugo-theme-xmt/" target="_blank" rel="noopener noreffer"
+          title="XMT">XMT</a></span>
+      {{end}}
+    </div>
+    {{end}}
+
   </div>
 </div>
 {{end}}

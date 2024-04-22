@@ -2,14 +2,7 @@
 {{/* .Content */}}
 
 
-{{ range $_, $taxonomy := .Site.Taxonomies.categories }}
-<li>
-  <a href="{{ .Page.Permalink }}">{{.Page.Title}}
-    <small>
-      ({{ $taxonomy.Count }})</small>
-  </a>
-</li>
-{{ end }}
+
 
 <div class="XMT_home_article">
   <div class="XMT_home_article-list">

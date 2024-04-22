@@ -12,11 +12,11 @@
                 </span>
             </span></p>
 
-        <ul class="XMT_reads_friends XMTcx-friends">
+        <ul class="XMT_reads_friends XMT-friends">
             {{ range $index, $friend := $links }}
             <li class="XMT_reads_friends-item"> <a class="contain" href="{{ $friend.url | safeURL }}" target="_blank"
-                    style="background: #FA742B">
-                    <div class="XMTcx-f-left">
+                    style="background: #3EAC5A69">
+                    <div class="XMT-f-left">
                         <div class="f-avatar"> <img width="40" height="40" class="avatar ls-is-cached lazyloaded"
                                 src="{{ $friend.avatar | safeURL }}" data-src="{{ $friend.avatar | safeURL }}"> 
                             </div>          
@@ -57,7 +57,6 @@
                 {{else}}https://cdnjson.com/images/2024/03/23/noavatar_middle3819ce7850af41b5.jpg {{end}}
                 <br>&nbsp;&nbsp;link: {{ site.BaseURL}}
             </div>
-            </span>
         </div>
 
 
@@ -66,5 +65,6 @@
         {{.Content}}
 
     </div>
+    {{ partial "content/comment.html" . }}
 </div>
 {{end }}

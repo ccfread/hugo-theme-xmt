@@ -4,11 +4,10 @@
             <ul class="XMT_bread_bread">
                 <li class="item"> <svg class="icon2" aria-hidden="true">
                         <use xlink:href="#icon-A131"></use>
-                    </svg> <a href="https://xx9q.com/" class="link" title="首页">首页</a> </li>
-                <li class="line">/</li>
-                <li class="item"> <a class="link" href="https://xx9q.com/category/bingsha/" title="日常分享">日常分享</a> </li>
-                <li class="line">/</li>
-                <li class="item">正文</li>
+                    </svg>
+                
+                    文章共{{.FuzzyWordCount}}字，阅读内容所需的预计时间{{.ReadingTime}}分钟。
+                </li>
             </ul>
         </div>
         <div class="XMT_reads_article">
@@ -53,6 +52,6 @@
         </div>-->
     </div>
     <div class="XMT_comment">
-        
+        {{ partial "content/comment.html" .}}
     </div>
 <div></div></div>
