@@ -1,11 +1,13 @@
+
+
 {{- $yiyanConfig := .Site.Params.aside.yiyan -}}
 {{ if $yiyanConfig.enable}}
 <div class="XMT_aside_item flatterer" style="top: 80px;">
     <div class="XMT_aside_item-title"> <svg class="icon2" aria-hidden="true"
             style="margin-right:5px;width:17px;height:17px">
-        </svg> <span class="text">舔狗日记</span> <span class="XMTcx_mac"></span> </div>
+        </svg> <span class="text">舔狗日记</span> <span class="XMT_mac"></span> </div>
     <div class="XMT_aside_item-contain">
-        <div class="content type4">
+        <div id="quote-of-the-day" class="content type4">
             今天早上我告诉你我想你了，你没理我。今天中午我给你打电话，你不接，打第二个你就关机。晚上我在你公司楼下等你，你对我说的第一句话就是滚“<mark>滚，别烦我，别浪费时间了</mark>”，我真的好感动，你居然为我考虑了，怕我浪费时间。呜呜呜，这是我爱你的第74天。
         </div>
         <div class="change"> <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="23"
@@ -17,3 +19,25 @@
     </div>
 </div>
 {{end}}
+
+
+<!--
+一言
+https://api.dzzui.com/api/yiyan?format=json
+添狗日记
+https://api.dzzui.com/api/tiangou?format=json
+土味情话
+https://api.dzzui.com/api/qinghua?format=json
+-->
+    <script>
+      fetch('https://api.dzzui.com/api/tiangou?format=json')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+          document.getElementById('quote-of-the-day').innerText = data.text;
+        })
+        .catch(error => {
+          console.error('Error fetching quote:', error);
+          document.getElementById('quote-of-the-day').innerText = '今天早上我告诉你我想你了，你没理我。今天中午我给你打电话，你不接，打第二个你就关机。晚上我在你公司楼下等你，你对我说的第一句话就是滚“滚，别烦我，别浪费时间了”，我真的好感动，你居然为我考虑了，怕我浪费时间。呜呜呜，这是我爱你的第74天。';
+        });
+    </script>

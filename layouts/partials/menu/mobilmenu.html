@@ -1,6 +1,8 @@
 {{- $asideConfig := .Site.Params.aside -}}
 {{- $authorConfig := .Site.Params.author -}}
 
+
+
 <div class="header_roll"> <img width="100%" height="150" class="header_roll-image" src="/img/shaonv.jpg" alt="侧边栏壁纸">
     <div class="header_roll-author"> <img width="50" height="50" class="avatar" src="{{ $authorConfig.xmtimg}}"
             alt="博主昵称">
@@ -11,11 +13,21 @@
     </div>
     <ul class="header_roll-count"> </ul>
     <ul class="header_roll-menu panel-box">
-        <li class="XMT_balance"> <a class="link" href="{{ .Site.BaseURL}}" title="首页"><svg class="icon2"
+                      {{ range .Site.Menus.main -}}
+                <li><a class="link panel" href="{{.URL}}"><span class="XMT_balance"><svg class="icon2"
                     aria-hidden="true">
-                    <use xlink:href="#icon-A131"></use>
-                </svg>首页</a> </li>
-
+                    <use xlink:href="#icon-A129"></use>
+                </svg> {{ .Name }}</span> 
+            <!--<svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"
+                    width="13" height="13">
+                    <path
+                        d="M624.865 512.247L332.71 220.088c-12.28-12.27-12.28-32.186 0-44.457 12.27-12.28 32.186-12.28 44.457 0l314.388 314.388c12.28 12.27 12.28 32.186 0 44.457L377.167 848.863c-6.136 6.14-14.183 9.211-22.228 9.211s-16.092-3.071-22.228-9.211c-12.28-12.27-12.28-32.186 0-44.457l292.155-292.16z">
+                    </path>
+                </svg> -->
+            
+            
+            </a></li>
+             {{- end }}       
     </ul>
 </div>
 <div class="header_hyal"></div>

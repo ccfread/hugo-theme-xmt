@@ -1,6 +1,24 @@
+
 {{ partial "menu/pcmenu.html" (dict "menuID" "main" "page" .) }}
 <div class="dddbqy" id="dddbqy"  style="display:none">
     {{ range $_, $taxonomy := .Site.Taxonomies.tags }}
     <a  href="{{ .Page.Permalink }}">{{ .Page.Title}}</a>
 {{ end }}
 </div>
+
+{{ $par :=.Site.Params}}
+<script>
+    // 检查window.config是否已经定义
+    if (!window.config) {
+      window.config = {};
+    }
+    // code
+    window.config.Code = {
+        "copy":"{{ $par.page.code.copyflag}}",
+        "update":"{{ $par.page.code.updateflag}}",
+        "isshowlinenum":"{{ $par.page.code.isshowlinenum}}",
+        "showmaxline":"{{ $par.page.code.showmaxline}}"
+    }
+    
+  </script>
+

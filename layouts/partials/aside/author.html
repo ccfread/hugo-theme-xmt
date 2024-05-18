@@ -8,9 +8,22 @@
         <p class="motto XMT_motto">{{ $asideConfig.author.discribe}}</p>
     </div>
     <div class="count">
-        <div class="item" title="累计文章数"> <span class="num">15</span> <span>文章数</span> </div>
-        <div class="item" title="累计标签数"> <span class="num">16</span> <span>标签数</span> </div>
-        <div class="item" title="累计评论数"> <span class="num">22</span> <span>评论量</span> </div>
+        <div class="item" title="累计文章数"> <span class="num">
+            {{ $posts := where .Site.Pages "Type" "posts" }}
+            {{ len $posts }}
+
+        </span> <span>文章数</span> </div>
+        <!--div class="item" title="累计标签数"> <span class="num">16</span> <span>标签数</span> </div-->
+        <div class="item" title="累计评论数"> <span class="num">
+            {{ if hugo.IsProduction}}
+  <!-- 只在生产模式下显示的内容 --> 
+            {{ $waline := .Site.Params.page.comment.waline }}          
+              {{ $cousdfnt := getJSON $waline.serverURL  "/comment?type=count" (dict "cache" time.Now)}}         
+                {{$cousdfnt}}
+                {{else}}
+                0
+                {{ end }}
+        </span> <span>评论量</span> </div>
     </div>
     {{ if $asideConfig.social.enable}}
     <ul class="list">

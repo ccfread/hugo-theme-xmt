@@ -58,14 +58,23 @@
       if (!window.config) {
         window.config = {};
       }
-      // 示例：设置API端点
+      // runtime
       window.config.Date = '{{ $footerConfig.siteTime.value}}';
     </script>
     <div>
-      <span></span>
+      <span>
+       <!-- <i class="fas fa-heart"></i>      -->
+        <i class="fa fa-cog fa-pulse"></i>
+      </span>
       <span>{{$footerConfig.siteTime.pre}}</span><span id="XMT_run_time">footer.runTime</span>
     </div>
     {{end}}
+<div class="foot_visitor">
+    <span id="busuanzi_container_site_uv" style="display: inline;">
+      <i class="fa fa-regular fa-user fa-fw" ></i><span id="busuanzi_value_site_uv"></span>人次
+    </span>
+    <span id="busuanzi_container_site_pv" style="display: inline;">，共点击<span id="busuanzi_value_site_pv"></span>次</span>
+  </div>
 
     {{ if $footerConfig.powered.enable }}
     <div class="themeby">
@@ -79,3 +88,21 @@
   </div>
 </div>
 {{end}}
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!--
+<i class="fa fa-spinner fa-spin"></i>
+    <hr>
+    <i class="fa fa-circle-o-notch fa-spin"></i>
+    <hr>
+    <i class="fa fa-refresh fa-spin"></i>
+    <hr>
+    <i class="fa fa-cog fa-spin"></i>
+    <p>这是四个用fa-pulse类实现的旋转不太流畅的加载图标</p>
+    <i class="fa fa-spinner fa-pulse"></i>
+    <hr>
+    <i class="fa fa-circle-o-notch fa-pulse"></i>
+    <hr>
+    <i class="fa fa-refresh fa-pulse"></i>
+    <hr>
+    <i class="fa fa-cog fa-pulse"></i>
+-->

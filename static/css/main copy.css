@@ -273,7 +273,8 @@ html .XMT_home_article-si.default .information .title{font-size:15px}
 html .XMT_home_article-si.default .thumbnail{width:140px;height:120px;margin-right:10px}
 html .XMT_home_article-si.default .thumbnail time,html .XMT_home_article-si.default .thumbnail svg{display:none}
 html .XMT_home_article-si.default .title{margin-bottom:0}
-/*调整小屏幕隐藏了*/
+html .XMT_home_article-si.default .meta .items{width:100%}
+html .XMT_home_article-si.default .meta .items li{display:none}
 html .XMT_home_article-si.default .meta .items li:nth-child(1){display:flex}
 html .XMT_home_article-si.default .meta .items li:nth-child(2){display:flex;margin-left:auto}
 html .XMT_home_article-si.default .meta .items li::after{display:none}
@@ -354,17 +355,13 @@ html .XMT_wallpaper__list{grid-template-columns: repeat(2,1fr)}
 .XMT_home_article-si .meta{display:flex;align-items:center;margin-top:auto;color:var(--minor);font-size:13px}
 .XMT_home_article-si .meta .items{display:flex;align-items:center;flex-wrap:wrap;margin-left:auto}
 .XMT_home_article-si .meta .items li{display:flex;align-items:center}
-/*.XMT_home_article-si .meta .items li::after{content:'/';color:var(--seat);padding:0 4px}*/
+.XMT_home_article-si .meta .items li::after{content:'/';color:var(--seat);padding:0 4px}
 .XMT_home_article-si .meta .items li:last-child::after{display:none}
 .XMT_home_article-si .meta .iconfont{margin-right:2px}
 .XMT_home_article-si .meta .last{margin-left:20px;display:flex;align-items:center}
 .XMT_home_article-si .meta .last .icon{margin-right:3px}
 .XMT_home_article-si .meta .last .link{color:var(--minor)}
 .XMT_home_article-si .meta .last .link:hover{color:var(--theme)}
-
-
-.XMT_home_article-si .meta .items .link{color:var(--minor)}
-.XMT_home_article-si .meta .items .link:hover{color:var(--theme)}
 
 
 
@@ -684,7 +681,7 @@ html .XMT_wallpaper__list{grid-template-columns: repeat(2,1fr)}
 .XMT_reads_article ol li,.XMT_reads_article ul li{line-height:26px}
 .XMT_reads_article ol li{list-style:decimal}
 .XMT_reads_article ul li{list-style:disc}
-.XMT_reads_article table{/*width:100%;*/max-width:100%;table-layout:fixed;color:var(--minor);margin-bottom:18px;font-size:14px;border-top:1px solid var(--classC);border-left:1px solid var(--classC)}
+.XMT_reads_article table{width:100%;max-width:100%;table-layout:fixed;color:var(--minor);margin-bottom:18px;font-size:14px;border-top:1px solid var(--classC);border-left:1px solid var(--classC)}
 .XMT_reads_article table td,.XMT_reads_article table th{padding:10px;border-bottom:1px solid var(--classC);border-right:1px solid var(--classC)}
 .XMT_reads_article table thead th{font-weight:500;background:var(--classC)}
 .XMT_reads_article table tbody tr{transition:background 0.35s}
@@ -811,8 +808,6 @@ html[data-night='night'] .header_search{border-top:1px solid rgba(132,132,132,0.
 .header_search .result .item:hover{background:var(--classD);border-radius:2px 2px 2px 2px}
 .XMT_label .search input:focus{background:var(--background);border-color:var(--minor)}
 .header_search_all .submit:hover,.open>.dropdown-toggle.submit{color:#fff;background-color:#449d44;border-color:#398439}
-
-
 @media (max-width:992px){.XMT_search_inner .XMT_ranking{display:none}
 .XMT_total .XMT_search_inner{grid-template-columns:repeat(1,1fr)}
 .XMT_search_inner .XMT_label{padding:0}}
@@ -1094,7 +1089,6 @@ padding-bottom: 8px;
   align-items: center;
   box-sizing: border-box;
   width: 100%;
-  position: relative;
   font-family: system-ui,-apple-system,BlinkMacSystemFont,PingFang SC,Microsoft YaHei UI,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
   font-weight: bold;
   line-height: 1.4em;
@@ -1195,17 +1189,7 @@ padding-bottom: 8px;
   -moz-transition: max-height 0.2s cubic-bezier(0.5, 0, 1, 0) 0s;
   -o-transition: max-height 0.2s cubic-bezier(0.5, 0, 1, 0) 0s;
   transition: max-height 0.2s cubic-bezier(0.5, 0, 1, 0) 0s;
-
 }
-
-.highlight > .chroma.open .table-wrapper > pre {
-  border-spacing: 0;
-  width: auto;
-  overflow: auto;
-  display: block;
-  background-color: #f6f8fa;
-}
-
 
 .highlight > .chroma table {
   border-spacing: 0;

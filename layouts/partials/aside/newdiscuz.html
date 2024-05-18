@@ -1,0 +1,31 @@
+{{ $waline := .Site.Params.page.comment.waline }}
+
+{{ if $waline.indexShowComm}}
+
+
+{{ $walinecommcount := $waline.commcount}}
+{{ $websiteurl := .Site.BaseURL}}
+{{ $walinecommbaseurl := "/comment?type=recent&count="}}
+{{ $counturl := printf "%s%d" $walinecommbaseurl $walinecommcount}}
+
+
+<div class="XMT_aside_item newdis">
+    <div class="XMT_aside_item-title"> <svg class="icon2" aria-hidden="true"
+            style="margin-right:5px;width:17px;height:17px">
+        </svg> <span class="text">最新评论</span> <span class="XMT_mac"></span>
+    </div>
+    <div class="XMT_aside_item-contain" style="padding:10px">
+        {{ if hugo.IsProduction}}
+        {{ $resp := getJSON $waline.serverURL $counturl (dict "cache" time.Now)}}
+        <ul>
+            {{ range $resp }}
+            <li class="recentcomments">
+                <!-- 22，获取前22个字-->
+                <a href="{{$websiteurl}}{{ .url }}">{{ .nick }}</a>：{{ .comment | safeHTML | truncate 22}}
+            </li>
+            {{ end }}
+        </ul>
+        {{end}}
+    </div>
+</div>
+{{end}}

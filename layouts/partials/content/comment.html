@@ -10,14 +10,14 @@
     import { init } from '/lib/waline/waline.js';
 
 // 中文默认
-/*const locale = {
+const locale = {
     nick: '昵称',
     nickError: '昵称不能少于3个字符',
     mail: '邮箱',
     mailError: '请填写正确的邮件地址',
     link: '网址',
     optional: '可选',
-    placeholder: '欢迎评论',
+    placeholder: '长风破浪会有时O(∩_∩)O',
     sofa: '来发评论吧~',
     submit: '提交',
     like: '喜欢',
@@ -29,7 +29,7 @@
     more: '加载更多...',
     preview: '预览',
     emoji: '表情',
-    uploadImage: '上传图片',
+    uploadImage: '图片上传',
     seconds: '秒前',
     minutes: '分钟前',
     hours: '小时前',
@@ -38,10 +38,11 @@
     uploading: '正在上传',
     login: '登录',
     logout: '退出',
-    admin: '博主',
+    //admin: '博主',
     sticky: '置顶',
     word: '字',
-    wordHint: '评论字数应在 $0 到 $1 字之间！\n当前字数：$2',
+    wordLimit: [5,500],
+    //wordHint: '评论字数应在 $0 到 $1 字之间！\n当前字数：$2',
     anonymous: '匿名',
     level0: '潜水',
     level1: '冒泡',
@@ -60,55 +61,21 @@
     latest: '按正序',
     hottest: '按热度',
     reactionTitle: '你认为这篇文章怎么样？',
+    //是否显示powdered by waline...
+    copyright: false,
   };
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
    init({
       el: '#waline',
-      serverURL: 'https://pl.fread.top',
+      serverURL: '{{$comment.waline.serverURL}}',
+      //serverURL: 'http://150.158.124.248:8360',
       search: false,//取消动态表情搜索框
       lang: 'zh-CN',
-      //reaction: true, // 开启反应喜欢，不喜欢，点赞等
-      placeholder: '需要留下点什么吗 ヾ(≧▽≦*)o',
+      /*placeholder: '需要留下点什么吗 ヾ(≧▽≦*)o',
       login: 'disable',
-      imgUploader: false,
-      // 设置 emoji 为微博与哔哩小黄脸
-      /*emoji: [
-          '//unpkg.com/@waline/emojis@1.2.0/weibo',
-          //'//unpkg.com/@waline/emojis@1.2.0/bmoji',
-          //'//unpkg.com/@waline/emojis@1.2.0/qq',
-          '//unpkg.com/@waline/emojis@1.2.0/tieba',
-
-      ],*/
-
-      //placeholder: '需要留下点什么吗',
-      reaction: [
-        'https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_agree.png',
-        'https://unpkg.com/@waline/emojis@1.1.0/weibo/weibo_heart_eyes.png',
-        'https://unpkg.com/@waline/emojis@1.1.0/weibo/weibo_dog_joy.png',
-        'https://unpkg.com/@waline/emojis@1.1.0/weibo/weibo_dog_consider.png',
-        'https://unpkg.com/@waline/emojis@1.1.0/weibo/weibo_sob.png',
-      ],
-   //  locale,
+      imgUploader: false,*/
+      locale,
     });
 
 </script>
