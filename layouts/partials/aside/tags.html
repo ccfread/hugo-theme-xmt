@@ -3,12 +3,19 @@
 <div class="XMT_aside_item tags">
   <div class="XMT_aside_item-title"> <svg class="icon2" aria-hidden="true"
       style="margin-right:5px;width:17px;height:17px">
-    </svg> <span class="text">标签云</span> <span class="XMT_mac"></span> 
+    </svg> <span class="text">标签云</span> <span class="XMT_mac"></span>
   </div>
   <div class="XMT_aside_item-contain" style="padding:10px">
     <div class="tag">
     </div>
-    <ul class="cloud" id='holder'></ul>
+    <ul class="cloud" id="holder" style="display: none;">
+
+      {{ range $_, $taxonomy := .Site.Taxonomies.tags }}
+      <li data-url="{{ .Page.Permalink }}" data-label={{ .Page.Title}}></li>
+      {{ end }}
+    </ul>
+
+
   </div>
 </div>
 {{ end}}

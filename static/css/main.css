@@ -266,7 +266,7 @@ html .XMT_home_column-title .item{display:none}
 html .XMT_home_column-title .item:nth-child(1),html .XMT_home_column-title .item:nth-child(2){display:block}
 html .XMT_home_article-si .information .title{font-size:16px}
 /*小屏幕也显示摘要html .XMT_home_article-si .information .abstract{display:none}*/
-html .XMT_home_article-si .meta .last{display:none !important}
+/*html .XMT_home_article-si .meta .last{display:none !important}*/
 html .XMT_home_article-si.single .thumbnail{height:130px}
 html .XMT_home_article-si.single .thumbnail time,html .XMT_home_article-si.single .thumbnail svg{display:none}
 html .XMT_home_article-si.default .information .title{font-size:15px}
@@ -274,9 +274,10 @@ html .XMT_home_article-si.default .thumbnail{width:140px;height:120px;margin-rig
 html .XMT_home_article-si.default .thumbnail time,html .XMT_home_article-si.default .thumbnail svg{display:none}
 html .XMT_home_article-si.default .title{margin-bottom:0}
 /*调整小屏幕隐藏了*/
-html .XMT_home_article-si.default .meta .items li:nth-child(1){display:flex}
+/*html .XMT_home_article-si.default .meta .items li:nth-child(1){display:flex}
 html .XMT_home_article-si.default .meta .items li:nth-child(2){display:flex;margin-left:auto}
-html .XMT_home_article-si.default .meta .items li::after{display:none}
+html .XMT_home_article-si.default .meta .items li::after{display:none}*/
+html .XMT_home_article-si.default .meta .items li{display:none}
 html .XMT_home_article-si.multiple .thumbnail{grid-template-rows:70px;gap:10px}
 html .XMT_home_article-si.none .information{height:120px}
 html .XMT_home_article-si.none .abstract{display:-webkit-box;font-size:13px}
@@ -357,7 +358,7 @@ html .XMT_wallpaper__list{grid-template-columns: repeat(2,1fr)}
 /*.XMT_home_article-si .meta .items li::after{content:'/';color:var(--seat);padding:0 4px}*/
 .XMT_home_article-si .meta .items li:last-child::after{display:none}
 .XMT_home_article-si .meta .iconfont{margin-right:2px}
-.XMT_home_article-si .meta .last{margin-left:20px;display:flex;align-items:center}
+.XMT_home_article-si .meta .last{margin-left:5px;display:flex;align-items:center}
 .XMT_home_article-si .meta .last .icon{margin-right:3px}
 .XMT_home_article-si .meta .last .link{color:var(--minor)}
 .XMT_home_article-si .meta .last .link:hover{color:var(--theme)}
@@ -399,15 +400,23 @@ html .XMT_wallpaper__list{grid-template-columns: repeat(2,1fr)}
 .XMT_load:active{-webkit-transform:scale(0.75);transform:scale(0.75)}
 .XMT_load .sN{color:#bfbfbf}
 
-.XMT_load .link{width:40px;height:32px;line-height:32px;text-align:center;border-radius:16px;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background:var(--background);transition:-webkit-transform 0.25s;transition:transform 0.25s;transition:transform 0.25s,-webkit-transform 0.25s;box-shadow:var(--box-shadow);display:inline-block}
-.pagination .active{ background-color: transparent;
+.XMT_load .link{width:40px;height:32px;line-height:32px;text-align:center;border-radius:16px;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background:var(--background);transition:-webkit-transform 0.25s;transition:transform 0.25s;transition:transform 0.25s,-webkit-transform 0.25s;box-shadow:var(--box-shadow);display:inline-block;color:#000}
+/*.pagination .active{ background-color: transparent;
     background-image: linear-gradient(#21b0db,#000);
     background-position: 0 96%;
     background-size: 100% 15%;
     background-repeat: no-repeat;
     color: black;
   }
-
+*/
+.pagination .active{ background-color: transparent;
+  background-image: linear-gradient(#eb0a0a,#a80808);
+  background-position: 0 96%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  color: white;
+  font-size: 1.4em;
+}
 .XMT_assort{position:relative;font-size:14px;margin-right:15px;transition:color 0.35s;white-space:nowrap;color:var(--main)}
 .XMT_assort_link{display:flex;align-items:center}
 .XMT_assort_link-icon{transition:-webkit-transform 0.35s;transition:transform 0.35s;transition:transform 0.35s,-webkit-transform 0.35s}

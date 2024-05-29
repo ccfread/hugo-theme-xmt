@@ -1,3 +1,7 @@
+{{- $asideConfig := .Site.Params.aside -}}
+
+{{ if $asideConfig.date.enable}}
+
 <div class="XMT_aside_item timelife">
     <div class="XMT_aside_item-title"> <svg class="icon2" aria-hidden="true"
             style="margin-right:5px;width:17px;height:17px">
@@ -57,3 +61,4 @@
         </div>
     </div>
 </div>
+{{end}}

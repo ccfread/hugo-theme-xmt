@@ -1,0 +1,25 @@
+{{- define "main" -}}
+<!-- 这里是分类或标签列表页 -->
+  {{- $taxonomies := .Data.Plural -}}
+
+  <div class="page archive">
+    {{- $termsIcon := "" -}}
+    {{- if eq $taxonomies "categories" -}}
+      {{- $termsIcon = "fa-solid fa-folder-tree" -}}
+    {{- else if eq $taxonomies "tags" -}}
+      {{- $termsIcon = "fa-solid fa-tags" -}}
+    {{- else if eq $taxonomies "collections" -}}
+      {{- $termsIcon = "fa-solid fa-layer-group" -}}
+    {{- end -}}
+    {{- /* Title */ -}}
+    <h1 class="single-title animate__animated animate__pulse animate__faster">
+    
+      {{- .Params.Title | default (T $taxonomies) | default $taxonomies | dict "Some" | T "allSome" }} 
+      <sup>{{/* len .Data.Terms.ByCount */}}</sup>
+    </h1>
+    {{- /* Render miscellaneous terms */ -}}
+    {{$taxonomies}}
+    </br>
+    {{- .Render (add "terms/" $taxonomies) -}}
+  </div>
+{{- end -}}

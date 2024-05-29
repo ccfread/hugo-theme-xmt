@@ -11,8 +11,90 @@ document.addEventListener("DOMContentLoaded", () => {
   Overflow_Close();
   initRunSiteTime();
   initHighlight();
+  gototop();
+  tagsyum();
  // initTable();
 });
+
+// 声明一个全局数组变量
+var globaImglArray = [];
+
+
+function tagsyum(){
+  const entries = [];
+  const colors = [
+    "#F8D800",
+    "#0396FF",
+    "#EA5455",
+    "#7367F0",
+    "#32CCBC",
+    "#F6416C",
+    "#28C76F",
+    "#9F44D3",
+    "#F55555",
+    "#736EFE",
+    "#E96D71",
+    "#DE4313",
+    "#D939CD",
+    "#4C83FF",
+    "#F072B6",
+    "#C346C2",
+    "#5961F9",
+    "#FD6585",
+    "#465EFB",
+    "#FFC600",
+    "#FA742B",
+    "#5151E5",
+    "#BB4E75",
+    "#FF52E5",
+    "#49C628",
+    "#00EAFF",
+    "#F067B4",
+    "#F067B4",
+    "#ff9a9e",
+    "#00f2fe",
+    "#4facfe",
+    "#f093fb",
+    "#6fa3ef",
+    "#bc99c4",
+    "#46c47c",
+    "#f9bb3c",
+    "#e8583d",
+    "#f68e5f",
+  ];
+  const random = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
+
+
+  $(".XMT_aside_item-contain .cloud li").each((i, item) => {
+    entries.push({
+      label: $(item).attr("data-label"),
+      url: $(item).attr("data-url"),
+      target: "_blank",
+      fontColor: colors[random(0, colors.length - 1)],
+      fontSize: 15,
+    });
+  });
+  $(".XMT_aside_item-contain .tag").svg3DTagCloud({
+    entries,
+    width: 220,
+    height: 220,
+    radius: "65%",
+    radiusMin: 75,
+    bgDraw: false,
+    fov: 800,
+    speed: 1.5,
+    fontWeight: 500,
+    opacityOver: 1.00,
+    opacityOut: 0.05,
+    opacitySpeed: 6,
+  });
+
+}
+
 
 function Overflow_Close() {
   $(".header_hyal").on("click", function () {
@@ -594,3 +676,57 @@ let dictionary = {
   "markdown": "markdown",
   "yml": "YAML"
 };
+
+function gototop(){
+  //scroll 事件适用于所有可滚动的元素和 window 对象（浏览器窗口）。
+  $(window).scroll(function() {
+    var scrollt = document.documentElement.scrollTop + document.body.scrollTop; //获取滚动后的高度
+ 
+    if( scrollt >1200 ){  //判断滚动后高度超过200px,就显示
+
+        $("#back_top").fadeIn(400); //淡入
+
+    }else{
+
+        $("#back_top").stop().fadeOut(400); //如果返回或者没有超过,就淡出.必须加上stop()停止之前动画,否则会出现闪动
+
+    }
+      });
+      /*点击返回顶部*/
+      $("#back_top").click(function(){ //当点击标签的时候,使用animate在200毫秒的时间内,滚到顶部
+ 
+        $("html,body").animate({scrollTop:"0px"},200);
+ 
+    }); 
+ 
+}
+
+
+function randomPostImg(thisPic){
+  /*fetch('/txt/rimg.txt')
+  .then(response => response.text())
+  .then(content => {
+      // 对文件内容进行处理
+      // 将文本分割成行数组
+      const lines = content.split('\n');
+      // 获取随机行数
+      var randomNum = Math.floor(Math.random() * 42) + 1; // 使用Math.floor()函数将小数向下取整，并加上起始点值
+      const randomLine = lines[randomNum];
+      thisPic.src=randomLine;
+  })
+  .catch(error => console.log(error));*/
+  var randomNum = 0;
+  do {
+    randomNum = Math.floor(Math.random() * 42) + 1;
+  } while (isNumberInArray(globaImglArray,randomNum));
+
+  globaImglArray.push(randomNum);
+  thisPic.src="/rimg/"+randomNum+".jpg";
+
+}
+
+
+
+function isNumberInArray(array, number) {
+  return array.indexOf(number) !== -1;
+}

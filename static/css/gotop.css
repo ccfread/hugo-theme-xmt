@@ -1,0 +1,18 @@
+#back_top div{
+    position: absolute;
+    margin: auto;
+    right: 0px;
+    left: 0px;
+}
+#back_top{
+    /*background-color: #dddddd;
+    height: 38px;
+    width: 38px;
+    border-radius: 3px;*/
+    display: block;
+    cursor: pointer;
+    position: fixed;
+    right: 5px;
+    bottom: 200px;
+    display: none;
+}

@@ -1,0 +1,42 @@
+{{- define "main" -}}
+<!-- 这里是选择的具体的分类或标签的列表页 -->
+
+
+{{- /* Title */ -}}
+{{- $taxonomy := .Data.Singular -}}
+{{- $pageCount := len .Pages -}}
+{{- $termIcon := "" -}}
+{{- $termTitle := .Title -}}
+{{- if eq $taxonomy "category" -}}
+{{- $termIcon = "fa-regular fa-folder-open" -}}
+{{- else if eq $taxonomy "tag" -}}
+{{- $termIcon = "fa-solid fa-tag" -}}
+{{- else if eq $taxonomy "collection" -}}
+{{- $termIcon = "fa-solid fa-layer-group" -}}
+{{- else -}}
+{{- $termTitle = printf "%v - %v" (T $taxonomy | default $taxonomy) .Title -}}
+{{- end -}}
+
+
+
+{{- /* Paginate */ -}}
+{{- if .Pages -}}
+{{- $pages := .Pages.GroupByDate "2006" -}}
+{{- with .Site.Params.list.paginate | default .Site.Params.paginate -}}
+{{- $pages = $.Paginate $pages . -}}
+{{- else -}}
+{{- $pages = .Paginate $pages -}}
+{{- end -}}
+<div class="XMT_home_article">
+  <div class="XMT_home_article-list">
+    {{- range $pages.PageGroups -}}
+    {{- range .Pages -}}
+    {{ partial "section/section.html" .}}
+    {{- end -}}
+    {{- end -}}
+  </div>
+</div>
+<!-- 翻页-->
+{{ partial "paginates/paginate.html" .}}
+{{- end -}}
+{{- end -}}
