@@ -1,0 +1,23 @@
+{{define "main" }}
+
+<div class="XMT_main XMT_page">
+    {{/* 存档页面的模板 */}}
+    {{ $pagessss := where site.RegularPages "Params.type" "posts" }}
+    这里是存档页面
+    {{ range $pagessss }}
+{{/* 开始循环 */}}
+{{ $title := .Title }}
+{{ $date := .Date }}
+
+<article>
+    <h2><a href="{{ .Permalink }}">{{ $title }}</a></h2>
+    <time datetime="{{ $date.Format " 2006-01-02" }}">{{ $date }}</time>
+    {{ with .Description }}<p>{{ . }}</p>{{ end }}
+</article>
+
+
+
+    {{end}}
+
+</div>
+{{end }}

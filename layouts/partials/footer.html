@@ -12,13 +12,12 @@
     {{ if $footerConfig.copyright.copyright}}
     <div class="item">
       <span>{{ $footerConfig.copyright.since }} - {{ now.Year }} 版权所有 ©
-        
+
         {{ if $footerConfig.copyright.author }}
         {{ .Site.Title}}
         {{end}}
 
       </span>
-
       {{ if $footerConfig.powered.enable }}
       {{ if $footerConfig.powered.hugoLogo }}
       <span>Powered by
@@ -26,6 +25,7 @@
       </span>
       {{end}}
       {{end}}
+
 
     </div>
     {{end}}
@@ -49,8 +49,10 @@
     </div>
     {{end}}
 
-
-
+    <div class="yunsupport">
+      <span>本站由阿里云提供云服务</span>
+    </div>
+    <div class="cdnsupport"></div>
     {{ if $footerConfig.siteTime.enable }}
     {{- /* Config script */ -}}
     <script>
@@ -63,18 +65,20 @@
     </script>
     <div>
       <span>
-       <!-- <i class="fas fa-heart"></i>      -->
+        <!-- <i class="fas fa-heart"></i>      -->
         <i class="fa fa-cog fa-pulse"></i>
       </span>
       <span>{{$footerConfig.siteTime.pre}}</span><span id="XMT_run_time">footer.runTime</span>
     </div>
     {{end}}
-<div class="foot_visitor">
-    <span id="busuanzi_container_site_uv" style="display: inline;">
-      <i class="fa fa-regular fa-user fa-fw" ></i><span id="busuanzi_value_site_uv"></span>人次
-    </span>
-    <span id="busuanzi_container_site_pv" style="display: inline;">，共点击<span id="busuanzi_value_site_pv"></span>次</span>
-  </div>
+    <div class="foot_visitor">
+      <span id="busuanzi_container_site_uv" style="display: inline;">
+        <i class="fa fa-regular fa-user fa-fw"></i><span id="busuanzi_value_site_uv"></span>人次
+      </span>
+      <span id="busuanzi_container_site_pv" style="display: inline;">，共点击<span
+          id="busuanzi_value_site_pv"></span>次</span>
+    </div>
+
 
     {{ if $footerConfig.powered.enable }}
     <div class="themeby">

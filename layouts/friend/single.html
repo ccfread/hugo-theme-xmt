@@ -65,6 +65,8 @@
         {{.Content}}
 
     </div>
-    {{ partial "content/comment.html" . }}
+    {{if .Params.isComment }}
+    {{ partial "comment/comment.html" .}}
+    {{end}}
 </div>
 {{end }}

@@ -1,0 +1,13 @@
+{{ $comm := .Site.Params.page.comment }}
+{{if $comm.enable}}
+{{ $ctype :=$comm.commtype }}
+{{if $ctype}}
+{{ $comStr := printf "comment/%s/comment.html" $ctype}}
+<div class="XMT_comment">
+    <div id="commenthome"></div>
+
+</div>
+{{partial $comStr .}}
+{{end}}
+{{end}}
+

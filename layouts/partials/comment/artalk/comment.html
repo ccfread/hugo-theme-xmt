@@ -1,0 +1,19 @@
+
+{{- $comment := .Site.Params.page.comment.artalk -}}
+{{ if $comment.enable}}
+
+<link rel="stylesheet" href="/lib/artalk/Artalk-2.8.6.css" />
+<!-- CSS -->
+<!--link href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/artalk/2.8.6/Artalk.css" rel="stylesheet"-->
+<script src="/lib/artalk/Artalk-2.8.6.js" type="text/javascript"></script>
+<!-- JS -->
+<!--script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/artalk/2.8.6/Artalk.js"--><!--/script-->
+<script>
+  Artalk.init({
+    el: '#commenthome',
+    server: '{{ $comment.serverURL }}',
+    site:      '小苏打笔记',
+  })
+</script>
+
+{{end}}

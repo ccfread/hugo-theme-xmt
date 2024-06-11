@@ -1,0 +1,156 @@
+{{ $waline := .Site.Params.page.comment.waline }}
+{{ $baseUrl := $waline.serverURL}}
+{{ $posturl := .RelPermalink}}
+{{ $pcommcountaddr := "/comment?type=count&url="}}
+
+{{$scratch := newScratch}}
+{{$scratch.Add "comments" slice}}
+
+<!-- 获取文章评论总数 -->
+{{$count := getJSON $baseUrl "/comment?type=count&url=" $posturl }}
+{{$posturl}}
+{{ $count}}
+<!-- 文章评论总数大于0 -->
+{{if gt $count 0}}
+{{$comments := getJSON $baseUrl "/comment?path=" $posturl "&page=1&pageSize=3"}}
+{{range $cmt := $comments.data}}
+{{$scratch.Add "comments" $cmt}}
+{{end}}
+
+{{$totalPages := $comments.totalPages}}
+{{$totalPages}}
+{{if gt $totalPages 1}}
+{{range $page := seq 2 $totalPages}}
+{{$comments := getJSON $baseUrl "/comment?path=" $posturl "&pageSize=10&page=" $page}}
+{{range $cmt := $comments.data}}
+123123
+{{$scratch.Add "comments" $cmt}}
+{{end}}
+{{end}}
+{{end}}
+{{end}}
+
+
+
+    <div data-waline="">
+
+
+        <!--评论总数 -->
+        <div class="wl-meta-head">
+            <div class="wl-count"><span class="wl-num">{{$count}}</span> 条评论</div>
+        </div>
+
+
+        <!--评论列表 -->
+        <div class="wl-cards">
+            {{range $cmt := $scratch.Get "comments"}}
+            <div class="wl-card-item" id={{$cmt.objectId}}>
+                <div class="wl-user" aria-hidden="true">
+                    <img class="wl-user-avatar" src="{{$cmt.avatar}}">
+                </div>
+                <div class="wl-card">
+                    <div class="wl-head">
+                        {{ if $cmt.link}}
+                        <a class="wl-nick" rel="nofollow" href="{{$cmt.link}}" target="_blank">{{$cmt.nick}}</a>
+                        {{else}}
+                        <span class="wl-nick">{{$cmt.nick}}</span>
+                        {{end}}
+                        {{ if eq $cmt.type "administrator"}}
+                        <span class="wl-badge">博主</span>
+                        {{else}}
+                        {{end}}
+
+
+                        <span class="wl-time">{{dateFormat $cmt.insertedAt "2006-01-02 13:14:15"}}</span>
+
+                        <div class="wl-comment-actions">
+                            <button type="button" class="wl-like" title="喜欢">
+                                <svg viewBox="0 0 1024 1024" width="24" height="24">
+                                    <path
+                                        d="M850.654 323.804c-11.042-25.625-26.862-48.532-46.885-68.225-20.022-19.61-43.258-34.936-69.213-45.73-26.78-11.124-55.124-16.727-84.375-16.727-40.622 0-80.256 11.123-114.698 32.135A214.79 214.79 0 0 0 512 241.819a214.79 214.79 0 0 0-23.483-16.562c-34.442-21.012-74.076-32.135-114.698-32.135-29.25 0-57.595 5.603-84.375 16.727-25.872 10.711-49.19 26.12-69.213 45.73-20.105 19.693-35.843 42.6-46.885 68.225-11.453 26.615-17.303 54.877-17.303 83.963 0 27.439 5.603 56.03 16.727 85.117 9.31 24.307 22.659 49.52 39.715 74.981 27.027 40.293 64.188 82.316 110.33 124.915 76.465 70.615 152.189 119.394 155.402 121.371l19.528 12.525c8.652 5.52 19.776 5.52 28.427 0l19.529-12.525c3.213-2.06 78.854-50.756 155.401-121.371 46.143-42.6 83.304-84.622 110.33-124.915 17.057-25.46 30.487-50.674 39.716-74.981 11.124-29.087 16.727-57.678 16.727-85.117.082-29.086-5.768-57.348-17.221-83.963zM512 761.5S218.665 573.55 218.665 407.767c0-83.963 69.461-152.023 155.154-152.023 60.233 0 112.473 33.618 138.181 82.727 25.708-49.109 77.948-82.727 138.18-82.727 85.694 0 155.155 68.06 155.155 152.023C805.335 573.551 512 761.5 512 761.5z"
+                                        fill="currentColor">
+
+                                    </path>
+                                </svg> 0</button>
+                            <button type="button" class="wl-reply" title="回复"><svg viewBox="0 0 1024 1024" width="24"
+                                    height="24">
+                                    <path
+                                        d="M810.667 213.333a64 64 0 0 1 64 64V704a64 64 0 0 1-64 64H478.336l-146.645 96.107a21.333 21.333 0 0 1-33.024-17.856V768h-85.334a64 64 0 0 1-64-64V277.333a64 64 0 0 1 64-64h597.334zm0 64H213.333V704h149.334v63.296L459.243 704h351.424V277.333zm-271.36 213.334v64h-176.64v-64h176.64zm122.026-128v64H362.667v-64h298.666z"
+                                        fill="currentColor">
+
+                                    </path>
+                                </svg></button>
+                        </div>
+
+
+                    </div>
+                    <div class="wl-meta" aria-hidden="true">
+                        <span class="wl-addr" data-value="{{$cmt.addr}}">{{$cmt.addr}}</span>
+                        <span class="wl-browser" data-value="{{$cmt.browser}}">{{$cmt.browser}}</span>
+                        <span class="wl-os" data-value="{{$cmt.os}}">{{$cmt.os}}</span>
+                    </div>
+
+
+
+                    <div class="wl-content" data-expand="查看更多...">
+                        {{$cmt.comment | safeHTML}}
+                    </div>
+
+                    <div class="wl-quote">
+                        {{range $cmt := $cmt.children}}
+                        <div class="wl-card-item" id="{{$cmt.objectId}}">
+                            <div class="wl-user" aria-hidden="true">
+                                <img class="wl-user-avatar" src="{{$cmt.avatar}}">
+                            </div>
+
+                            <div class="wl-card">
+                                <div class="wl-head">
+                                    {{ if $cmt.link}}
+                                    <a class="wl-nick" rel="nofollow" href="{{$cmt.link}}"
+                                        target="_blank">{{$cmt.nick}}</a>
+                                    {{else}}
+                                    <span class="wl-nick">{{$cmt.nick}}</span>
+                                    {{end}}
+                                    {{ if eq $cmt.type "administrator"}}
+                                    <span class="wl-badge">博主</span>
+                                    {{else}}
+                                    {{end}}
+                                    <span class="wl-time">{{dateFormat $cmt.insertedAt "2006-01-02 13:14:15"}}</span>
+                                </div>
+
+                                <div class="wl-comment-actions">
+                                    <button type="button" class="wl-like" title="喜欢">
+                                        <svg viewBox="0 0 1024 1024" width="24" height="24">
+                                            <path
+                                                d="M850.654 323.804c-11.042-25.625-26.862-48.532-46.885-68.225-20.022-19.61-43.258-34.936-69.213-45.73-26.78-11.124-55.124-16.727-84.375-16.727-40.622 0-80.256 11.123-114.698 32.135A214.79 214.79 0 0 0 512 241.819a214.79 214.79 0 0 0-23.483-16.562c-34.442-21.012-74.076-32.135-114.698-32.135-29.25 0-57.595 5.603-84.375 16.727-25.872 10.711-49.19 26.12-69.213 45.73-20.105 19.693-35.843 42.6-46.885 68.225-11.453 26.615-17.303 54.877-17.303 83.963 0 27.439 5.603 56.03 16.727 85.117 9.31 24.307 22.659 49.52 39.715 74.981 27.027 40.293 64.188 82.316 110.33 124.915 76.465 70.615 152.189 119.394 155.402 121.371l19.528 12.525c8.652 5.52 19.776 5.52 28.427 0l19.529-12.525c3.213-2.06 78.854-50.756 155.401-121.371 46.143-42.6 83.304-84.622 110.33-124.915 17.057-25.46 30.487-50.674 39.716-74.981 11.124-29.087 16.727-57.678 16.727-85.117.082-29.086-5.768-57.348-17.221-83.963zM512 761.5S218.665 573.55 218.665 407.767c0-83.963 69.461-152.023 155.154-152.023 60.233 0 112.473 33.618 138.181 82.727 25.708-49.109 77.948-82.727 138.18-82.727 85.694 0 155.155 68.06 155.155 152.023C805.335 573.551 512 761.5 512 761.5z"
+                                                fill="currentColor">
+
+                                            </path>
+                                        </svg> 0</button>
+                                    <button type="button" class="wl-reply" title="回复"><svg viewBox="0 0 1024 1024"
+                                            width="24" height="24">
+                                            <path
+                                                d="M810.667 213.333a64 64 0 0 1 64 64V704a64 64 0 0 1-64 64H478.336l-146.645 96.107a21.333 21.333 0 0 1-33.024-17.856V768h-85.334a64 64 0 0 1-64-64V277.333a64 64 0 0 1 64-64h597.334zm0 64H213.333V704h149.334v63.296L459.243 704h351.424V277.333zm-271.36 213.334v64h-176.64v-64h176.64zm122.026-128v64H362.667v-64h298.666z"
+                                                fill="currentColor">
+
+                                            </path>
+                                        </svg></button>
+                                </div>
+
+                                <div class="wl-meta" aria-hidden="true">
+                                    <span class="wl-addr" data-value="{{$cmt.addr}}">{{$cmt.addr}}</span>
+                                    <span class="wl-browser" data-value="{{$cmt.browser}}">{{$cmt.browser}}</span>
+                                    <span class="wl-os" data-value="{{$cmt.os}}">{{$cmt.os}}</span>
+                                </div>
+                                <div class="wl-content" data-expand="查看更多...">
+                                    {{$cmt.comment | safeHTML}}
+                                </div>
+                            </div>
+                        </div>
+                        {{end}}
+                    </div>
+                </div>
+            </div>
+            {{end}}
+        </div>
+    </div>

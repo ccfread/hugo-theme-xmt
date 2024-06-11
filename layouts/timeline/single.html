@@ -1,0 +1,42 @@
+{{define "main" }}
+<div class="XMT_main XMT_page">
+    <div class="XMT_reads" data-cid="4">
+        <div class="XMT_tline_content">
+            <div class="XMT_tline_wrapper">
+                <div class="XMT_tline_light"><i></i></div>
+                <div class="XMT_tline_main">
+                    <h1 class="XMT_tline_title">{{with .Site.Params.page.timeline.title}}{{.}}{{else}}
+                        大事记
+                        {{end}}</h1>
+                    {{ range $index, $tline := sort .Site.Data.timeline.Tline "year" }}
+                    <div class="XMT_tline_year">
+                        <h2><a href="">{{$tline.year}}年<i></i></a></h2>
+                        <div class="XMT_tline_list">
+                            <ul>
+                                {{range $cindex,$contmain := sort $tline.cont "date"}}
+                                {{ if $contmain.highlight}}
+                                <li class="XMT_tline_cls XMT_tline_highlight">
+                                    {{else }}
+                                <li class="XMT_tline_cls">
+                                    {{end}}
+                                    <p class="XMT_tline_date">{{ $contmain.date }}</p>
+                                    <p class="XMT_tline_intro">{{ $contmain.title }} </p>
+                                    <p class="XMT_tline_version">&nbsp;</p>
+                                    <div class="XMT_tline_more">
+                                        <p>{{ $contmain.desc }}</p>
+                                    </div>
+                                </li>
+                                {{end}}
+                            </ul>
+                        </div>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{if .Params.isComment }}
+    {{ partial "comment/comment.html" .}}
+    {{end}}
+</div>
+{{end}}
